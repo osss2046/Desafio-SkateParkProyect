@@ -1,0 +1,39 @@
+<h1>Skate Park</h1>
+<div class="py-4">
+    <h2>Modificar Datos</h2>
+    <hr class="w-50 mx-auto" />
+    <form id="datosForm" action="/datos" method="POST" class="w-50 mx-auto">
+        <div class="form-group row">
+            <div class="form-group col-12 col-sm-6">
+                <label>Email</label>
+                <input name="email" type="email" class="form-control m-auto" value="{{skater.email}}" readonly />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Nombre</label>
+                <input name="nombre" type="text" class="form-control m-auto" value="{{skater.nombre}}" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Password</label>
+                <input name="password" type="password" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Repita la password</label>
+                <input name="confirm_password" type="password" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Años de experiencia</label>
+                <input name="anos_experiencia" type="number" class="form-control m-auto" value="{{skater.anos_experiencia}}" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Especialidad</label>
+                <input name="especialidad" type="text" class="form-control m-auto" value="{{skater.especialidad}}" required />
+            </div>
+        </div>
+        <div class="mb-1">
+            <button type="submit" class="btn btn-info mb-3">Guardar Cambios</button>
+        </div>
+    </form>
+    <form id="deleteForm" action="/delete-account" method="POST" class="w-50 mx-auto">
+        <button type="submit" class="btn btn-danger">Eliminar cuenta</button>
+    </form>
+</div>

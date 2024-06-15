@@ -1,0 +1,42 @@
+<h1>Administración de Participantes</h1>
+<div class="py-4">
+    <h2>Lista de participantes</h2>
+    <hr class="w-50 mx-auto" />
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Años de experiencia</th>
+                <th scope="col">Especialidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each skaters}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td><div style="background-image: url('/images/{{this.foto}}');"></div></td>
+                <td>{{this.nombre}}</td>
+                <td>{{this.anos_experiencia}}</td>
+                <td>{{this.especialidad}}</td>
+                <td class="{{#if this.estado}}text-success font-weight-bold{{else}}text-warning font-weight-bold{{/if}}">
+                    {{#if this.estado}}Aprobado{{else}}En revisión{{/if}}
+                </td>
+                <td>
+                    <form action="/admin/aprobar" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <button type="submit" class="btn btn-success btn-sm">Aprobar</button>
+                    </form>
+                    <form action="/admin/rechazar" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="{{this.id}}">
+                        <button type="submit" class="btn btn-danger btn-sm">Rechazar</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

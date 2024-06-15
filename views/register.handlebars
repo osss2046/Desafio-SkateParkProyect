@@ -1,0 +1,66 @@
+<h1>Skate Park</h1>
+<div class="py-4">
+    <h2>Registro</h2>
+    <hr class="w-50 mx-auto" />
+    <form id="registerForm" action="/register" method="POST" enctype="multipart/form-data" class="w-50 mx-auto">
+        <div class="form-group row">
+            <div class="form-group col-12 col-sm-6">
+                <label>Email</label>
+                <input id="email" name="email" type="email" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Nombre</label>
+                <input id="nombre" name="nombre" type="text" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Password</label>
+                <input id="password" name="password" type="password" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Repita la password</label>
+                <input id="confirm_password" name="confirm_password" type="password" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Años de experiencia</label>
+                <input id="anos_experiencia" name="anos_experiencia" type="number" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12 col-sm-6">
+                <label>Especialidad</label>
+                <input id="especialidad" name="especialidad" type="text" class="form-control m-auto" required />
+            </div>
+            <div class="form-group col-12">
+                <label>Foto de perfil</label>
+                <input id="foto" name="foto" type="file" class="form-control-file" required />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-info mb-3">Registrarme</button>
+        <p><a href="/login"> Iniciar sesión</a></p>
+        <div id="error-message" class="text-danger"></div>
+    </form>
+</div>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const nombre = document.getElementById('nombre').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm_password').value;
+        const anosExperiencia = document.getElementById('anos_experiencia').value;
+        const especialidad = document.getElementById('especialidad').value;
+        const foto = document.getElementById('foto').files[0];
+
+        if (!email || !nombre || !password || !confirmPassword || !anosExperiencia || !especialidad || !foto) {
+            document.getElementById('error-message').innerText = 'Por favor complete todos los campos.';
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            document.getElementById('error-message').innerText = 'Las contraseñas no coinciden.';
+            return;
+        }
+
+        this.submit();
+    });
+</script>
